@@ -1,4 +1,5 @@
-const { ApolloServer, gql } = require('apollo-server');
+const { ApolloServer, gql } = require("apollo-server");
+const resolvers = "../resolvers";
 
 // A schema is a collection of type definitions (hence "typeDefs")
 // that together define the "shape" of queries that are executed against
@@ -12,12 +13,12 @@ const typeDefs = gql`
     phone: String
     password: String
   }
-  
-  type Post {
-    userId: String
-    body: String
-    title: String
-  }
+
+  #  type Post {
+  #   userId: String
+  #  body: String
+  # title: String
+  #   }
 
   # The "Query" type is special: it lists all of the available queries that
   # clients can execute, along with the return type for each. In this
@@ -25,9 +26,7 @@ const typeDefs = gql`
   type Query {
     users: [User]
   }
-  type Query {
-    posts: [Post]
-  }
+  # type Query {
+  #   posts: [Post]
+  # }
 `;
-
-
