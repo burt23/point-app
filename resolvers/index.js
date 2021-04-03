@@ -5,6 +5,7 @@ const { users, posts } = require("../data"); // TODO posts
 const resolvers = {
   Query: {
     users: () => users,
+    posts: () => posts,
   },
 };
 

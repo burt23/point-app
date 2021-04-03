@@ -1,5 +1,6 @@
 const { ApolloServer, gql } = require("apollo-server");
 const resolvers = require("../resolvers");
+const PointAppAPI = require("../dataSources/PointAppAPI");
 
 // A schema is a collection of type definitions (hence "typeDefs")
 // that together define the "shape" of queries that are executed against
@@ -14,24 +15,27 @@ const typeDefs = gql`
     password: String
   }
 
-  #  type Post {
-  #   userId: String
-  #  body: String
-  # title: String
-  #   }
+  type Post {
+    userId: String
+    body: String
+    title: String
+  }
 
   # The "Query" type is special: it lists all of the available queries that
   # clients can execute, along with the return type for each. In this
   # case, the "users" query returns an array of zero or more Users (defined above).
   type Query {
     users: [User]
+    posts: [Post]
   }
-  # type Query {
-  #   posts: [Post]
-  # }
 `;
 
-const server = new ApolloServer({ typeDefs, resolvers });
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+  dataSources: () => ({ pointAppAPI: new PointAppAPI() }),
+  context: () => ({ token: "foobarboobaz" }),
+});
 
 server.listen().then(({ url }) => {
   console.log(`🚀  Server ready at ${url}`);
