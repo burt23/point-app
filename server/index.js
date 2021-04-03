@@ -2,6 +2,8 @@ const { ApolloServer, gql } = require("apollo-server");
 const resolvers = require("../resolvers");
 const PointAppAPI = require("../dataSources/PointAppAPI");
 
+const PORT = process.env.PORT || 8000;
+
 // A schema is a collection of type definitions (hence "typeDefs")
 // that together define the "shape" of queries that are executed against
 // your data.
@@ -37,6 +39,6 @@ const server = new ApolloServer({
   context: () => ({ token: "foobarboobaz" }),
 });
 
-server.listen().then(({ url }) => {
+server.listen(PORT).then(({ url }) => {
   console.log(`🚀  Server ready at ${url}`);
 });
