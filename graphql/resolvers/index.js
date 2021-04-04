@@ -6,8 +6,7 @@ const User = require("../../models/Users");
 // schema. This resolver retrieves books from the "books" array above.
 const resolvers = {
   Query: {
-    users: () => users,
-    getPosts: async () => {
+    posts: async () => {
       try {
         const posts = Post.findAll();
         return posts;
@@ -15,7 +14,7 @@ const resolvers = {
         console.error("error getting posts", error);
       }
     },
-    getUsers: async () => {
+    users: async () => {
       try {
         const users = User.findAll();
         return users;
@@ -23,7 +22,19 @@ const resolvers = {
         console.error("error getting users", error);
       }
     },
-    posts: () => posts,
+    getPosts: async (parent, { id }) => {
+      try {
+        console.log("incoming hit to resolver id: ", id);
+        const posts = Post.findAll({
+          where: {
+            id: id,
+          },
+        });
+        return posts;
+      } catch (error) {
+        console.error("error getting posts", error);
+      }
+    },
   },
 };
 
