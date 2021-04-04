@@ -24,7 +24,6 @@ const resolvers = {
     },
     getPosts: async (parent, { id }) => {
       try {
-        console.log("incoming hit to resolver id: ", id);
         const posts = Post.findAll({
           where: {
             id: id,
