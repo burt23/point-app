@@ -38,7 +38,9 @@ const server = new ApolloServer({
   typeDefs,
   resolvers,
   dataSources: () => ({ pointAppAPI: new PointAppAPI() }),
-  context: () => ({ token: "foobarboobaz" }),
+  context: () => ({ token: "foobarboobaz" }), // TODO: testing for auth
+  playground: true,
+  introspection: true,
 });
 
 server.listen(PORT).then(({ url }) => {
