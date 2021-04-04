@@ -7,7 +7,7 @@ class User extends Model {}
 User.init(
   {
     phone: {
-      type: DataTypes.NUMBER,
+      type: DataTypes.STRING,
       allowNull: true,
       unique: true,
     },

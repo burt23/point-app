@@ -1,5 +1,5 @@
 const { ApolloServer, gql } = require("apollo-server");
-const resolvers = require("../resolvers");
+const resolvers = require("../graphql/resolvers");
 const PointAppAPI = require("../dataSources/PointAppAPI");
 
 const PORT = process.env.PORT || 8000;
@@ -28,6 +28,8 @@ const typeDefs = gql`
   # case, the "users" query returns an array of zero or more Users (defined above).
   type Query {
     users: [User]
+    getUsers: [User]
+    getPosts: [Post]
     posts: [Post]
   }
 `;
