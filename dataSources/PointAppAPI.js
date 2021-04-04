@@ -1,6 +1,7 @@
 const { RESTDataSource } = require("apollo-datasource-rest");
 
 const BASE_URL = require("../config");
+const client = require("../db");
 
 class PointAppAPI extends RESTDataSource {
   constructor() {

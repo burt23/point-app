@@ -1,10 +1,10 @@
 const { Sequelize } = require("sequelize");
-const BASE_URL = require("../config");
+const { BASE_URL, DEV_MODE } = require("../config");
 
 const client = new Sequelize(BASE_URL, {
   dialect: "postgres",
   dialectOptions: {
-    ssl: true,
+    ssl: DEV_MODE ? false : true,
   },
 });
 
