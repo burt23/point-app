@@ -7,6 +7,7 @@ const LOCAL_URL = `http://localhost:${PORT}`;
 const { DATABASE_URL = "", DEV_MODE = false } = process.env;
 const WANTS_DEV_MODE = DEV_MODE == "false" ? false : true;
 const DB_URL = WANTS_DEV_MODE ? LOCAL_DB : DATABASE_URL;
+console.log({ WANTS_DEV_MODE, DB_URL });
 const BASE_URL = WANTS_DEV_MODE
   ? LOCAL_URL
   : "https://pointappgraphql.herokuapp.com";
