@@ -8,6 +8,12 @@ const typeDefs = `
     password: String
   }
 
+  input PostInput {
+    userId: String
+    body: String
+    title: String
+  }
+
   type User {
     email: String
     phone: String
@@ -32,6 +38,7 @@ const typeDefs = `
 
   type Mutation {
     createUser(input: UserInput): User 
+    createPost(input: PostInput!): Post 
   }
   
   `;

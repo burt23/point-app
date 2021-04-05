@@ -58,6 +58,18 @@ const resolvers = {
         );
       }
     },
+    createPost: async (_, { input }) => {
+      try {
+        const post = new Post(input);
+        await post.save();
+        return post;
+      } catch (error) {
+        console.error(
+          `Unable to complete createPost Mutation.\n Error: ${error}, `
+        );
+        throw new Error(error);
+      }
+    },
   },
 };
 
