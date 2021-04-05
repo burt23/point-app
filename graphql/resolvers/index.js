@@ -11,6 +11,7 @@ const resolvers = {
         return posts;
       } catch (error) {
         console.error("error getting posts", error);
+        throw new Error(error);
       }
     },
     users: async () => {
@@ -19,6 +20,20 @@ const resolvers = {
         return users;
       } catch (error) {
         console.error("error getting users", error);
+        throw new Error(error);
+      }
+    },
+    getPost: async (parent, { id }) => {
+      try {
+        const posts = Post.findOne({
+          where: {
+            id,
+          },
+        });
+        return posts;
+      } catch (error) {
+        console.error("error getting post", error);
+        throw new Error(error);
       }
     },
     getPosts: async (parent, { id }) => {
@@ -31,6 +46,7 @@ const resolvers = {
         return posts;
       } catch (error) {
         console.error("error getting posts", error);
+        throw new Error(error);
       }
     },
     getUser: async (parent, { id }) => {
@@ -43,6 +59,7 @@ const resolvers = {
         return user;
       } catch (error) {
         console.error("error getting posts", error);
+        throw new Error(error);
       }
     },
   },
@@ -56,6 +73,7 @@ const resolvers = {
         console.error(
           `Unable to complete createUser Mutation.\n Error: ${error}, `
         );
+        throw new Error(error);
       }
     },
     createPost: async (_, { input }) => {
@@ -78,6 +96,17 @@ const resolvers = {
       } catch (error) {
         console.error(
           `Unable to complete createPost Mutation.\n Error: ${error}, `
+        );
+        throw new Error(error);
+      }
+    },
+    deletePost: async (_, { id }) => {
+      try {
+        const post = await Post.destroy({ where: { id } });
+        return post;
+      } catch (error) {
+        console.error(
+          `Unable to complete deletePost Mutation.\n Error: ${error}, `
         );
         throw new Error(error);
       }

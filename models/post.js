@@ -18,6 +18,11 @@ Post.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    id: {
+      type: DataTypes.UUIDV4,
+      primaryKey: true,
+      autoIncrement: true,
+    },
   },
   { sequelize: client, modelName: "post" }
 );
