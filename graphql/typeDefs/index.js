@@ -1,8 +1,4 @@
-const { gql } = require("apollo-server");
-// A schema is a collection of type definitions (hence "typeDefs")
-// that together define the "shape" of queries that are executed against
-// your data.
-const typeDefs = gql`
+const typeDefs = `
   # Comments in GraphQL strings (such as this one) start with the hash (#) symbol.
 
   # This "User" type defines the queryable fields for every user in our data source.
@@ -25,7 +21,6 @@ const typeDefs = gql`
     users: [User]
     getPosts(id: ID!): [Post]
     posts: [Post]
-  }
-`;
+  }`;
 
 module.exports = typeDefs;

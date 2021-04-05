@@ -1,6 +1,5 @@
-const { users, posts } = require("../../data"); // TODO posts
 const Post = require("../../models/post");
-const User = require("../../models/Users");
+const User = require("../../models/user");
 
 // Resolvers define the technique for fetching the types defined in the
 // schema. This resolver retrieves books from the "books" array above.
