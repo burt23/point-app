@@ -5,10 +5,11 @@ const LOCAL_DB = "postgres://localhost:5432/graphql";
 const LOCAL_URL = `http://localhost:${PORT}`;
 
 const { DATABASE_URL = "", DEV_MODE = false } = process.env;
-console.log("app running in dev mode", DEV_MODE);
-const DB_URL = !!DEV_MODE ? LOCAL_DB : DATABASE_URL;
-console.log("dbURL", DB_URL);
-const BASE_URL = !!DEV_MODE ? LOCAL_URL : "pointappgraphql.herokuapp.com";
+const WANTS_DEV_MODE = DEV_MODE == "false" ? false : true;
+const DB_URL = WANTS_DEV_MODE ? LOCAL_DB : DATABASE_URL;
+const BASE_URL = WANTS_DEV_MODE
+  ? LOCAL_URL
+  : "https://pointappgraphql.herokuapp.com";
 
 const {
   ISSUER_BASE_URL: issuerBaseURL,
@@ -25,4 +26,4 @@ const authConfig = {
   secret,
 };
 
-module.exports = { DEV_MODE, DB_URL, BASE_URL, authConfig, PORT };
+module.exports = { WANTS_DEV_MODE, DB_URL, BASE_URL, authConfig, PORT };
