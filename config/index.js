@@ -5,7 +5,9 @@ const LOCAL_DB = "postgres://localhost:5432/graphql";
 const LOCAL_URL = `http://localhost:${PORT}`;
 
 const { DATABASE_URL = "", DEV_MODE = false } = process.env;
+console.log("app running in dev mode", DEV_MODE);
 const DB_URL = !!DEV_MODE ? LOCAL_DB : DATABASE_URL;
+console.log("dbURL", DB_URL);
 const BASE_URL = !!DEV_MODE ? LOCAL_URL : "pointappgraphql.herokuapp.com";
 
 const {
