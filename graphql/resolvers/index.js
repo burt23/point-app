@@ -25,10 +25,22 @@ const resolvers = {
       try {
         const posts = Post.findAll({
           where: {
-            id: id,
+            id,
           },
         });
         return posts;
+      } catch (error) {
+        console.error("error getting posts", error);
+      }
+    },
+    getUser: async (parent, { id }) => {
+      try {
+        const user = User.findOne({
+          where: {
+            id,
+          },
+        });
+        return user;
       } catch (error) {
         console.error("error getting posts", error);
       }

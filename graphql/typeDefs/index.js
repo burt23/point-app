@@ -19,8 +19,9 @@ const typeDefs = `
   # case, the "users" query returns an array of zero or more Users (defined above).
   type Query {
     users: [User]
-    getPosts(id: ID!): [Post]
+    getUser(id: ID!): User
     posts: [Post]
+    getPosts(id: ID!): [Post]
   }`;
 
 module.exports = typeDefs;
