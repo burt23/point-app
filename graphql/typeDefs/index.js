@@ -2,6 +2,12 @@ const typeDefs = `
   # Comments in GraphQL strings (such as this one) start with the hash (#) symbol.
 
   # This "User" type defines the queryable fields for every user in our data source.
+  input UserInput {
+    email: String
+    phone: String
+    password: String
+  }
+
   type User {
     email: String
     phone: String
@@ -22,6 +28,12 @@ const typeDefs = `
     getUser(id: ID!): User
     posts: [Post]
     getPosts(id: ID!): [Post]
-  }`;
+  }
+
+  type Mutation {
+    createUser(input: UserInput): User 
+  }
+  
+  `;
 
 module.exports = typeDefs;

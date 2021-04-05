@@ -46,6 +46,19 @@ const resolvers = {
       }
     },
   },
+  Mutation: {
+    createUser: async (_, { input }) => {
+      try {
+        const user = new User(input);
+        await user.save();
+        return user;
+      } catch (error) {
+        console.error(
+          `Unable to complete createUser Mutation.\n Error: ${error}, `
+        );
+      }
+    },
+  },
 };
 
 module.exports = resolvers;
