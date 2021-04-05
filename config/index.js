@@ -11,9 +11,9 @@ const {
 } = process.env;
 const WANTS_DEV_MODE = DEV_MODE == "false" ? false : true;
 
-console.log("point test", POINT_APP_POSTGRES_DB == "false");
+console.log("point test", POINT_APP_POSTGRES_DB == false);
 
-const DB_URL = POINT_APP_POSTGRES_DB == "false" ? DATABASE_URL : LOCAL_DB;
+const DB_URL = POINT_APP_POSTGRES_DB == false ? DATABASE_URL : LOCAL_DB;
 const BASE_URL = WANTS_DEV_MODE
   ? LOCAL_URL
   : "https://pointappgraphql.herokuapp.com";
