@@ -4,7 +4,7 @@ const typeDefs = require("../graphql/typeDefs");
 const { auth } = require("express-openid-connect");
 const { graphqlHTTP } = require("express-graphql");
 const { makeExecutableSchema } = require("graphql-tools");
-const { authConfig, PORT } = require("../config");
+const { authConfig, PORT, BASE_URL } = require("../config");
 
 const app = express();
 
@@ -25,5 +25,5 @@ app.use(
 );
 
 app.listen(PORT, () => {
-  console.log(`🚀  Server ready at ${PORT}`);
+  console.log(`🚀  Server ready at ${BASE_URL}:${PORT}`);
 });
