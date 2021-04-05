@@ -25,7 +25,7 @@ const resolvers = {
       try {
         const posts = Post.findAll({
           where: {
-            id,
+            userId: id,
           },
         });
         return posts;
@@ -62,6 +62,18 @@ const resolvers = {
       try {
         const post = new Post(input);
         await post.save();
+        return post;
+      } catch (error) {
+        console.error(
+          `Unable to complete createPost Mutation.\n Error: ${error}, `
+        );
+        throw new Error(error);
+      }
+    },
+    editPost: async (_, { id, input }) => {
+      try {
+        const post = await Post.findOne({ where: { id } });
+        await post.update(input);
         return post;
       } catch (error) {
         console.error(

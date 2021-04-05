@@ -39,6 +39,7 @@ const typeDefs = `
   type Mutation {
     createUser(input: UserInput): User 
     createPost(input: PostInput!): Post 
+    editPost(id: ID!, input: PostInput!): Post 
   }
   
   `;
