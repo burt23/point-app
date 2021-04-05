@@ -1,14 +1,14 @@
-const PORT = 3000;
+const {
+  DATABASE_URL = "",
+  DEV_MODE = false,
+  POINT_APP_POSTGRES_DB = false,
+  PORT = 3000,
+} = process.env;
 
 // you may need to run ```createdb graphql``` from the cmd line if don't already have a db named "graphql"
 const LOCAL_DB = "postgres://localhost:5432/graphql";
 const LOCAL_URL = `http://localhost:${PORT}`;
 
-const {
-  DATABASE_URL = "",
-  DEV_MODE = false,
-  POINT_APP_POSTGRES_DB = false,
-} = process.env;
 const WANTS_DEV_MODE = DEV_MODE == "false" ? false : true;
 
 console.log("point test", POINT_APP_POSTGRES_DB == false);
