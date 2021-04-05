@@ -20,6 +20,7 @@ const BASE_URL = WANTS_DEV_MODE
 
 console.log("heroku debug\n", {
   WANTS_DEV_MODE,
+  DEV_MODE,
   DB_URL,
   BASE_URL,
   POINT_APP_POSTGRES_DB,

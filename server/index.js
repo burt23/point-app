@@ -16,6 +16,8 @@ const schema = makeExecutableSchema({
 // auth router attaches /login, /logout, and /callback routes to the baseURL
 app.use(auth(authConfig));
 
+app.get("/", (_, res) => res.redirect("/graphql"));
+
 app.use(
   "/graphql",
   graphqlHTTP({
