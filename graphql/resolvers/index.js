@@ -1,8 +1,14 @@
 const Post = require("../../models/post");
 const User = require("../../models/user");
-
-// Resolvers define the technique for fetching the types defined in the
-// schema. This resolver retrieves books from the "books" array above.
+{
+  /**
+ Resolvers Map
+ Define's the technique for fetching the types defined in the schema. 
+ The map below corresponds the the schema declarations in the typeDefs file.
+ Supported fields include Query, Mutation, Subscription keys. See [https://graphql.org/](graphql
+ docs) for further info.
+ */
+}
 const resolvers = {
   Query: {
     posts: async () => {

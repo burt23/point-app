@@ -36,16 +36,17 @@ As mentioned in the Env Variables section, the Auth is being handled by a third 
 
 ## Example Mutations
 
-```mutation {
+```
+mutation {
  createPost(input:{userId:"2", body:"emails are so yesterday", title:"silly slack"}){
    title
    body
   }
+}
 mutation {
- createUser(input:{password:"wordsasdsdfsdffasd", email:"gasdfmil@gmail.com"}){
-   password
-   email
-    }
+  createUser(input:{password:"superTopSecret", email:"teslaturbine@protonmail.com"}){
+    password
+    email
   }
 }
 ```
